@@ -1,0 +1,90 @@
+﻿@using Vlogo.Suppliers.Contracts.Products
+@model Vlogo.Suppliers.Contracts.Products.Product
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = null;
+}
+
+<h1>Edit</h1>
+
+
+@using (Html.BeginForm("Edit", "Products", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.EditorForModel()
+
+    @Html.EditorFor(product => product.Ingredients)
+
+    @Html.HiddenFor(x => x.Id)
+    @Html.HiddenFor(x => x.SupplierId)
+
+    <p>
+        <button id="addIngredient" onclick="myFunction()" type="button">add ingredient</button>
+    </p>
+
+    <p>
+        <button type="submit">Create Employee</button>
+    </p>
+}
+
+@{
+    void Add(Product product)
+    {
+        var ingredients = new List<string>(product.Ingredients);
+        ingredients.Add("new ingredient");
+
+        product.Ingredients = ingredients;
+    }
+}
+
+<script type="text/javascript">
+    function myFunction() {
+        @{
+                Add(@Model);
+        }
+    }
+</script>
+
+@*@using (Html.BeginForm("Edit", "Products", FormMethod.Post))
+    {
+    <table cellpadding="0" cellspacing="0">
+        <tr>
+            <td>Title: </td>
+            <td>
+                @Html.TextBoxFor(m => m.Title, new { Value = Model.Title })
+            </td>
+        </tr>
+        <tr>
+            <td>Description: </td>
+            <td>
+                @Html.TextBoxFor(m => m.Description, new { Value = Model.Title })
+            </td>
+        </tr>
+        <tr>
+            <td>Mass: </td>
+            <td>
+                @Html.TextBoxFor(m => m.Mass, new { Value = Model.Mass })
+            </td>
+        </tr>
+        <tr>
+            <td>Price: </td>
+            <td>
+                @Html.TextBoxFor(m => m.Price, new { Value = Model.Price })
+            </td>
+        </tr>
+        <div>
+            <tr>
+                <td>Ingredients: </td>
+                <td>
+                    @Html.EditorForModel()
+                </td>
+            </tr>
+        </div>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Submit" /></td>
+        </tr>
+    </table>
+    }*@

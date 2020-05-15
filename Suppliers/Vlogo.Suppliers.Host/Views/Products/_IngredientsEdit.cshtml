@@ -1,0 +1,17 @@
+﻿@model IEnumerable<String>
+
+<table>
+
+    @foreach (var ingredient in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(i => ingredient)
+        </td>
+        <td>
+            @Html.TextBoxFor(i => ingredient, new { Value = ingredient })
+        </td>
+    </tr>
+    }
+
+</table>

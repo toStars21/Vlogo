@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewData["Title"] = "Products";
+}
+
+@model IReadOnlyCollection<Vlogo.Suppliers.Contracts.Products.Product>
+
+@foreach (var product in Model)
+{
+    <div>
+        <h4>@product.Title</h4>
+        <ul>
+            <li>mass: @product.Mass</li>
+            <li>price: @product.Price</li>
+            <li>description: @product.Description</li>
+            <li>
+                ingredients:
+                <ul>
+                    @foreach (var ingredient in product.Ingredients)
+                    {
+                        <li>@ingredient</li>
+                    }
+                </ul>
+            </li>
+        </ul>
+        <form action="/products/edit/@product.Id">
+            <button>edit</button>
+        </form>
+    </div>
+}
