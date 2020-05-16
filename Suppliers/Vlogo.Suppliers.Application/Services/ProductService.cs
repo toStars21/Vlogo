@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Vlogo.Suppliers.Application.Repositories;
-using Vlogo.Suppliers.Contracts;
 using Vlogo.Suppliers.Contracts.Products;
 
 namespace Vlogo.Suppliers.Application.Services
@@ -16,10 +15,24 @@ namespace Vlogo.Suppliers.Application.Services
             _repository = repository;
         }
 
-        public Task<Product> Get(Guid id) => _repository.Get(id);
+        public Task<Product> Get(Guid id)
+        {
+            return _repository.Get(id);
+        }
 
-        public Task<IReadOnlyCollection<Product>> GetAll() => _repository.GetAll();
-        public Task CreateUpdate(Product product) => _repository.CreateUpdate(product);
-        public Task Delete(Guid id) => _repository.Delete(id);
+        public Task<IReadOnlyCollection<Product>> GetAll()
+        {
+            return _repository.GetAll();
+        }
+
+        public Task CreateUpdate(Product product)
+        {
+            return _repository.CreateUpdate(product);
+        }
+
+        public Task Delete(Guid id)
+        {
+            return _repository.Delete(id);
+        }
     }
 }

@@ -21,7 +21,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vlogo.Clients.Host", "Clien
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Auth", "Auth", "{867AE8F2-DF94-4F38-8836-CD3CEE80BCAD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vlogo.Auth", "Auth\Vlogo.Auth\Vlogo.Auth.csproj", "{FE8FC16E-BFAC-4BC4-A308-BFF38D5A4950}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vlogo.Auth.Host", "Auth\Vlogo.Auth\Vlogo.Auth.Host.csproj", "{FE8FC16E-BFAC-4BC4-A308-BFF38D5A4950}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vlogo.AuthModel", "Auth\Vlogo.AuthModel\Vlogo.AuthModel.csproj", "{C48B4115-27EB-46E3-B137-0AA00D31F376}"
 EndProject

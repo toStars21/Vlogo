@@ -3,15 +3,14 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using MongoDB.Driver;
 using Vlogo.Suppliers.Application.Settings;
-using Vlogo.Suppliers.Contracts;
 using Vlogo.Suppliers.Contracts.Products;
 
 namespace Vlogo.Suppliers.Application.Repositories.Mongo
 {
     internal class MongoProductRepository : IProductRepository
     {
-        private readonly SuppliersSettings _settings;
         private readonly IMongoDatabase _db;
+        private readonly SuppliersSettings _settings;
 
         public MongoProductRepository(IMongoClient client, SuppliersSettings settings)
         {
@@ -43,9 +42,9 @@ namespace Vlogo.Suppliers.Application.Repositories.Mongo
             var collection = GetCollection();
 
             return collection.FindOneAndReplaceAsync(
-                filter: new FilterDefinitionBuilder<Product>().Eq(c => c.Id, product.Id),
-                replacement: product,
-                options: new FindOneAndReplaceOptions<Product, Product>
+                new FilterDefinitionBuilder<Product>().Eq(c => c.Id, product.Id),
+                product,
+                new FindOneAndReplaceOptions<Product, Product>
                 {
                     IsUpsert = true
                 });
@@ -58,7 +57,9 @@ namespace Vlogo.Suppliers.Application.Repositories.Mongo
             return collection.FindOneAndDeleteAsync(commodity => commodity.Id == id);
         }
 
-        private IMongoCollection<Product> GetCollection() =>
-            _db.GetCollection<Product>(_settings.ProductsCollectionName);
+        private IMongoCollection<Product> GetCollection()
+        {
+            return _db.GetCollection<Product>(_settings.ProductsCollectionName);
+        }
     }
 }
