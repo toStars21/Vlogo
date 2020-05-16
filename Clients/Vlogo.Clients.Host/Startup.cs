@@ -16,6 +16,8 @@ namespace Vlogo.Clients.Host
         {
             if (env.IsDevelopment()) app.UseDeveloperExceptionPage();
 
+            app.UseStaticFiles();
+
             app.UseRouting();
 
             app.UseEndpoints(endpoints => { endpoints.MapDefaultControllerRoute(); });

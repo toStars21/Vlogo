@@ -3,8 +3,47 @@
 <head>
     <meta charset="utf-8"/>
     <title>@ViewBag.Title</title>
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css"/>
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
+    </environment>
 </head>
 <body>
-@RenderBody()
+<header>
+    @if (IsSectionDefined("Header"))
+    {
+        @await RenderSectionAsync("Header")
+    }
+    else
+    {
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+            <a class="navbar-brand" asp-controller="Home" asp-action="Index">Home</a>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Browse" asp-action="Index">Browse</a>
+                </li>
+            </ul>
+        </nav>
+    }
+</header>
+
+<div class="container text-body">
+    @RenderBody()
+</div>
+
+<footer class="fixed-bottom">
+    @if (IsSectionDefined("Footer"))
+    {
+        @await RenderSectionAsync("Footer")
+    }
+    else
+    {
+        <div class="text-center">
+            <span class="text-muted">Vlogo Inc.</span>
+        </div>
+    }
+</footer>
 </body>
 </html>

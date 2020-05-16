@@ -4,4 +4,8 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Suppliers\Vlogo.Suppliers.Application\Vlogo.Suppliers.Application.csproj" />
+  </ItemGroup>
+
 </Project>
