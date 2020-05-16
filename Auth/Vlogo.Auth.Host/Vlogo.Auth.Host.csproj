@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Vlogo.Auth.Model\Vlogo.Auth.Model.csproj" />
+    <ProjectReference Include="..\Vlogo.AuthModel\Vlogo.Auth.Model.csproj" />
+  </ItemGroup>
+
+</Project>
